@@ -76,31 +76,31 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
         echo $this->fetch('meta');
 
 		echo $this->Html->css(array(
-			//'/file_manager/js/ext-4.2.0.663/resources/css/ext-all',
-			'/file_manager/js/ext-4.2.0.663/resources/ext-theme-neptune/ext-theme-neptune-all',
+			//'/file_manager/js/resources/css/ext-all',
+			'/file_manager/js/ext/resources/ext-theme-neptune/ext-theme-neptune-all',
 			//'/file_manager/css/extjs-themes/resources/css/bootstrap/bootstrap',
 			//'KitchenSink-all',
-            '/file_manager/js/codemirror-3.14/lib/codemirror',
-            '/file_manager/js/codemirror-3.14/theme/' . Configure::read('CodeMirror.theme'),
+            '/file_manager/js/codemirror/lib/codemirror',
+            '/file_manager/js/codemirror/theme/' . Configure::read('CodeMirror.theme'),
 			'/file_manager/css/app'
 		));
 		echo $this->fetch('css');
 
 		echo $this->Html->script(array(
-			'/file_manager/js/ext-4.2.0.663/ext-all-debug',
-            '/file_manager/js/codemirror-3.14/lib/codemirror',
-            '/file_manager/js/codemirror-3.14/addon/selection/active-line',
-            '/file_manager/js/codemirror-3.14/mode/xml/xml',
-            '/file_manager/js/codemirror-3.14/mode/javascript/javascript',
-            '/file_manager/js/codemirror-3.14/mode/css/css',
-            '/file_manager/js/codemirror-3.14/mode/vbscript/vbscript',
-            '/file_manager/js/codemirror-3.14/mode/htmlmixed/htmlmixed',
-            '/file_manager/js/codemirror-3.14/mode/clike/clike',
-            '/file_manager/js/codemirror-3.14/mode/php/php',
-            '/file_manager/js/codemirror-3.14/mode/markdown/markdown',
-            '/file_manager/js/codemirror-3.14/mode/sql/sql',
-            '/file_manager/js/codemirror-3.14/mode/properties/properties',
-            '/file_manager/js/codemirror-3.14/mode/yaml/yaml',
+			'/file_manager/js/ext/ext-all-debug',
+            '/file_manager/js/codemirror/lib/codemirror',
+            '/file_manager/js/codemirror/addon/selection/active-line',
+            '/file_manager/js/codemirror/mode/xml/xml',
+            '/file_manager/js/codemirror/mode/javascript/javascript',
+            '/file_manager/js/codemirror/mode/css/css',
+            '/file_manager/js/codemirror/mode/vbscript/vbscript',
+            '/file_manager/js/codemirror/mode/htmlmixed/htmlmixed',
+            '/file_manager/js/codemirror/mode/clike/clike',
+            '/file_manager/js/codemirror/mode/php/php',
+            '/file_manager/js/codemirror/mode/markdown/markdown',
+            '/file_manager/js/codemirror/mode/sql/sql',
+            '/file_manager/js/codemirror/mode/properties/properties',
+            '/file_manager/js/codemirror/mode/yaml/yaml',
             '/file_manager/js/md5',
 			'/file_manager/js/app'
 		));
