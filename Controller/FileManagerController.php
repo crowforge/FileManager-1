@@ -14,11 +14,10 @@ class FileManagerController extends FileManagerAppController {
 			$this->layout = 'default';
 		}
 
-		$path = Configure::read('FileManager.root');
+		$path = substr(Configure::read('FileManager.root'), 0, -1);
 		if (isset($_GET['node']) && !empty($_GET['node']) && $_GET['node'] != 'root') {
 			$path = $_GET['node'];
 		}
-
 		$dir = new Folder($path);
 		$files = $dir->read();
 		$path = str_replace('\\', '/', $path);
