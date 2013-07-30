@@ -1,6 +1,6 @@
 <?php
 
-Configure::write('FileManager.root', ROOT);
+Configure::write('FileManager.root', APP);
 
 Configure::write('CodeMirror.theme', 'ambiance');
 

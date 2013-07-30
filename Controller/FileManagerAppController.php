@@ -11,7 +11,7 @@ class FileManagerAppController extends AppController {
 	public $helpers = array('Js');
 
 	public function beforeFilter() {
-		$this->Auth->allow();
+		$this->Auth->authorize = false;
 	}
 
 }

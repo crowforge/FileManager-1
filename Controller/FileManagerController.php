@@ -14,7 +14,7 @@ class FileManagerController extends FileManagerAppController {
 			$this->layout = 'default';
 		}
 
-		$path = ROOT;
+		$path = Configure::read('FileManager.root');
 		if (isset($_GET['node']) && !empty($_GET['node']) && $_GET['node'] != 'root') {
 			$path = $_GET['node'];
 		}
@@ -33,7 +33,7 @@ class FileManagerController extends FileManagerAppController {
 	public function directory_create() {
 		if (!empty($this->request->data['path']) && !empty($this->request->data['name'])) {
 			if ($this->request->data['path'] == 'root') {
-				$this->request->data['path'] = ROOT;
+				$this->request->data['path'] = Configure::read('FileManager.root');
 			}
 			if (!is_dir($this->request->data['path'])) {
 				$this->request->data['path'] = dirname($this->request->data['path']);
@@ -104,7 +104,7 @@ class FileManagerController extends FileManagerAppController {
 	public function file_create() {
 		if (!empty($this->request->data['path']) && !empty($this->request->data['name'])) {
 			if ($this->request->data['path'] == 'root') {
-				$this->request->data['path'] = ROOT;
+				$this->request->data['path'] = Configure::read('FileManager.root');
 			}
 			if (!is_dir($this->request->data['path'])) {
 				$this->request->data['path'] = dirname($this->request->data['path']);
