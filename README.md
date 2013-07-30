@@ -1,7 +1,22 @@
 FileManager
 ===========
 
-File Manager Plugin for CakePHP 2.x
+File manager plugin for CakePHP 2.x. Useful for quick online editing without ftp/ssh
+or other remote access.
 
-Requires Sencha ExtJS & CodeMirror.
-Extract to Plugin/FileManager/webroot/js/ext & Plugin/FileManager/webroot/js/codemirror
+Requirement
+-----------
+
+These tools must be present in the plugin's javascript folder in order for the file manager to work properly:
+
+* Sencha ExtJS
+* CodeMirror
+
+Screenshot
+---------
+![screenshot of cakephp file manager](https://dl.dropboxusercontent.com/u/143367/CakePHP%20File%20Manager.png)
+
+TODO
+----
+
+* File upload
