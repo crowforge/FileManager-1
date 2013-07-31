@@ -12,7 +12,7 @@ These tools must be present in the plugin's javascript folder in order for the f
 * Sencha ExtJS
 * CodeMirror
 
-Download and extract to /app/Plugin/FileManager/webroot/js/ext and /app/Plugin/FileManager/webroot/js/codemirror
+Download and extract to /app/Plugin/FileManager/webroot/js/ext/ and /app/Plugin/FileManager/webroot/js/codemirror/
 respectively.
 
 Screenshot

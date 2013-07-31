@@ -14,13 +14,15 @@ class FileManagerController extends FileManagerAppController {
 			$this->layout = 'default';
 		}
 
-		$path = substr(Configure::read('FileManager.root'), 0, -1);
+		$path = substr(Configure::read('FileManager.root'), 0, -1); //remove trailing slash
+
 		if (isset($_GET['node']) && !empty($_GET['node']) && $_GET['node'] != 'root') {
 			$path = $_GET['node'];
 		}
+
 		$dir = new Folder($path);
 		$files = $dir->read();
-		$path = str_replace('\\', '/', $path);
+		$path = str_replace('\\', '/', $path); //convert windows style directory separator to web/linux style
 		$this->set(compact('files', 'path'));
 	}
 
@@ -30,14 +32,19 @@ class FileManagerController extends FileManagerAppController {
 	}
 
 	public function directory_create() {
+		$path = Configure::read('FileManager.root');
+
 		if (!empty($this->request->data['path']) && !empty($this->request->data['name'])) {
-			if ($this->request->data['path'] == 'root') {
-				$this->request->data['path'] = Configure::read('FileManager.root');
+			if ($this->request->data['path'] != 'root') {
+				$path = $this->request->data['path'];
+
+				if (!is_dir($path)) {
+					$path = dirname($path);
+				}
 			}
-			if (!is_dir($this->request->data['path'])) {
-				$this->request->data['path'] = dirname($this->request->data['path']);
-			}
-			$folder = new Folder($this->request->data['path'] . DS . $this->request->data['name'], true, 0777);
+
+			$folder = new Folder($path . DS . $this->request->data['name'], true, 0777);
+
 			if ($folder) {
 				$response = array(
 					'success' => true,
@@ -101,14 +108,19 @@ class FileManagerController extends FileManagerAppController {
 	}
 
 	public function file_create() {
+		$path = Configure::read('FileManager.root');
+
 		if (!empty($this->request->data['path']) && !empty($this->request->data['name'])) {
-			if ($this->request->data['path'] == 'root') {
-				$this->request->data['path'] = Configure::read('FileManager.root');
+			if ($this->request->data['path'] != 'root') {
+				$path = $this->request->data['path'];
+
+				if (!is_dir($path)) {
+					$path = dirname($path);
+				}
 			}
-			if (!is_dir($this->request->data['path'])) {
-				$this->request->data['path'] = dirname($this->request->data['path']);
-			}
-			$file = new File($this->request->data['path'] . DS . $this->request->data['name'], true, 0777);
+
+			$file = new File($path . DS . $this->request->data['name'], true, 0777);
+
 			if ($file->exists()) {
 				$response = array(
 					'success' => true,
@@ -127,6 +139,7 @@ class FileManagerController extends FileManagerAppController {
 
 	public function file_open() {
 		$node = $content = '';
+
 		if (!empty($this->request->data['node'])) {
 			$node = $this->request->data['node'];
 			$file = new File($node);
@@ -141,12 +154,13 @@ class FileManagerController extends FileManagerAppController {
 	}
 
 	public function file_save() {
-		if (!empty($_POST)) {
-			//debug($_POST);
-			$file = new File($_POST['path']);
+		if (!empty($this->request->data)) {
+
+			$file = new File($this->request->data['path']);
+
 			if ($file->exists()) {
 				if ($file->writable()) {
-					if ($file->write($_POST['content'])) {
+					if ($file->write($this->request->data['content'])) {
 						$response = array(
 							'success' => true,
 							'message' => 'File has been saved'
@@ -172,6 +186,7 @@ class FileManagerController extends FileManagerAppController {
 	public function file_delete() {
 		if (!empty($this->request->data)) {
 			$file = new File($this->request->data['path']);
+			
 			if ($file->exists()) {
 				if ($file->delete()) {
 					$response = array(
