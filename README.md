@@ -12,6 +12,9 @@ These tools must be present in the plugin's javascript folder in order for the f
 * Sencha ExtJS
 * CodeMirror
 
+Download and extract to /app/Plugin/FileManager/webroot/js/ext and /app/Plugin/FileManager/webroot/js/codemirror
+respectively.
+
 Screenshot
 ---------
 ![screenshot of cakephp file manager](https://dl.dropboxusercontent.com/u/143367/CakePHP%20File%20Manager.png)
